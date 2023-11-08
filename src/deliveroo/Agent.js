@@ -121,7 +121,7 @@ class Agent extends Xy {
                 agents.push( {id, name, x, y, score} )
             }
         }
-        this.emitOnePerTick( 'agents sensing', agents )
+        this.emitOnePerTick( 'agents sensing', {"agents": agents, "game_dump": this.#grid})
         
         // this.emitOnePerTick( 'agents sensing',
         //     Array.from( this.#grid.getAgents() ).filter( a => a != this && Xy.distance(a, this) < 5 ).map( ( {id, name, x, y, score} ) => { return {id, name, x, y, score} } )
@@ -151,7 +151,7 @@ class Agent extends Xy {
                 parcels.push( {id, x, y, carriedBy: ( parcel.carriedBy ? parcel.carriedBy.id : null ), reward} )
             }
         }
-        this.emit( 'parcels sensing', parcels )
+        this.emit( 'parcels sensing', {"parcels": parcels, "game_dump": this.#grid})
 
     }
 
